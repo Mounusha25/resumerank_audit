@@ -64,6 +64,9 @@ logs/
 # Streamlit
 .streamlit/secrets.toml
 
+# Interview prep (local only)
+interview-prep/
+
 # Models
 models/cache/
 *.pkl
