@@ -35,7 +35,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# Custom CSS for calm, neutral theme + responsive branding
+# Custom CSS for calm, neutral theme
 st.markdown("""
 <style>
     .main {
@@ -67,38 +67,11 @@ st.markdown("""
         font-size: 0.9rem;
         margin: 16px 0;
     }
-    .author-name-full {
-        display: inline;
-        color: #4a5568;
-        font-size: 0.85rem;
-        font-weight: 500;
-        margin-left: 8px;
-    }
-    .author-name-short {
-        display: none;
-    }
-    @media (max-width: 768px) {
-        .author-name-full {
-            display: none;
-        }
-        .author-name-short {
-            display: inline;
-            color: #4a5568;
-            font-size: 0.85rem;
-            font-weight: 500;
-            margin-left: 8px;
-        }
-    }
 </style>
 """, unsafe_allow_html=True)
 
 # Top Header (non-negotiable)
-st.markdown(
-    "# Resume-JD Ranking & Fairness Audit Demo"
-    '<span class="author-name-full">— Mounusha Ram Metti</span>'
-    '<span class="author-name-short">— MR</span>',
-    unsafe_allow_html=True
-)
+st.markdown("# Resume-JD Ranking & Fairness Audit Demo")
 st.markdown(
     '<p style="color: #718096; font-size: 0.95rem; margin-top: -12px;">'
     'Interactive demonstration of ranking behavior and bias sensitivity. '
