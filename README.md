@@ -6,7 +6,7 @@
 [![Streamlit](https://img.shields.io/badge/streamlit-1.41+-red.svg)](https://streamlit.io)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-**[🚀 Live Demo](#)** *(Deploy to get URL)* | **[📊 Sample Report](outputs/hybrid_ranker_fairness_report.html)**
+**[🚀 Live Demo](https://resumerankaudit.streamlit.app/)** | **[📊 Sample Report](outputs/hybrid_ranker_fairness_report.html)**
 
 ---
 
