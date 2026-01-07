@@ -61,8 +61,6 @@ UNIVERSITY_TIERS = {
 
 *Note: Small non-zero effects for pronoun swaps arise from semantic co-occurrence patterns in experience descriptions, not from explicit gender modeling.*
 
-> **Interview Insight**: "I chose hybrid architecture because production hiring systems combine semantic understanding with explicit structured signals. Pure embeddings under-represent education and continuity biases that real stakeholders care about measuring."
-
 ---
 
 ## Fairness Testing Framework
@@ -224,27 +222,6 @@ def _calculate_continuity_score(self, resume_text):
         return 0.5  # Penalty for detected gaps
     return 1.0  # Full score for continuity
 ```
-
----
-
-## Interview Positioning
-
-**Q: Why build this instead of just using SBERT?**
-
-> "Production hiring systems combine semantic understanding with structured signals like education and employment history. I wanted to measure fairness **at the architecture level** — can we audit a system where prestige effects are explicit vs accidental? The hybrid design makes counterfactual testing meaningful: swapping MIT↔Unknown actually changes rankings (Δ=1.76), whereas pure embeddings can't measure this (Δ=0.00)."
-
-**Q: What's the hardest part of fairness auditing?**
-
-> "**Defining the counterfactual**. For university swap, I had to choose: do we replace text mentions only, or simulate candidate pool shifts? I chose text replacement to isolate the scoring mechanism. For gender, pronoun swap is imperfect (misses implicit signals in writing style), but it's transparent and reproducible. The key is documenting limitations upfront."
-
-**Q: How would you productionize this?**
-
-> "Three changes:
-> 1. **Configurable weights**: Move 70/15/10/5 to YAML so stakeholders can run sensitivity analysis
-> 2. **Audit logs**: Track every ranking with component scores (semantic vs education vs continuity)
-> 3. **Threshold alerts**: Flag candidates where education/continuity signals dominate semantic fit (e.g., education > 40% of total score)
->
-> The goal isn't to eliminate structured signals — it's to make them **visible, tunable, and accountable**."
 
 ---
 
