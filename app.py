@@ -30,7 +30,7 @@ import plotly.graph_objects as go
 # Page config - clean, professional
 st.set_page_config(
     page_title="Resume Ranking Audit Demo",
-    page_icon="�",
+    page_icon="📊",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
