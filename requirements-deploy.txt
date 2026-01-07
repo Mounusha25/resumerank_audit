@@ -1,0 +1,20 @@
+# Core ML & NLP
+sentence-transformers==3.3.1
+scikit-learn==1.6.1
+torch==2.9.1
+numpy==2.2.3
+pandas==2.3.3
+
+# Ranking & Text Processing
+rank-bm25==0.2.2
+
+# Visualization
+matplotlib==3.10.2
+seaborn==0.13.2
+plotly==5.25.0
+
+# Web App
+streamlit==1.41.1
+
+# Utilities
+pyyaml==6.0.2

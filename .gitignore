@@ -1,0 +1,78 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Data (keep structure, ignore large files)
+data/*.csv
+data/*.pdf
+*.pkl
+*.joblib
+!config/*.json
+
+# Models (exclude pretrained downloads)
+models/pretrained/*
+!models/pretrained/.gitkeep
+
+# Outputs
+outputs/*.html
+outputs/*.json
+outputs/*.png
+outputs/*.md
+
+# Logs
+*.log
+logs/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Models
+models/cache/
+*.pkl
+*.h5
+*.pt
+
+# Logs
+logs/
+*.log
+
+# Reports
+reports/output/

@@ -1,0 +1,170 @@
+# Resume Ranking System Configuration
+
+# Data paths
+data:
+  raw_resumes: "data/raw/resumes/"
+  raw_job_descriptions: "data/raw/job_descriptions/"
+  processed_resumes: "data/processed/resumes.json"
+  processed_job_descriptions: "data/processed/job_descriptions.json"
+  splits:
+    dev: 0.3
+    test: 0.7
+
+# Model configuration
+models:
+  semantic:
+    name: "sentence-transformers/all-MiniLM-L6-v2"
+    alternative: "sentence-transformers/all-mpnet-base-v2"
+    device: "cpu"  # or "cuda" if GPU available
+    batch_size: 32
+    cache_dir: "models/cache/"
+  
+  baseline:
+    tfidf:
+      max_features: 5000
+      ngram_range: [1, 2]
+    bm25:
+      k1: 1.5
+      b: 0.75
+
+# Evaluation metrics
+evaluation:
+  metrics:
+    - "ndcg@5"
+    - "ndcg@10"
+    - "precision@5"
+    - "precision@10"
+    - "mrr"
+    - "spearman"
+  
+  # For evaluation with heuristic labels
+  use_weak_labels: false
+  label_source: "manual"  # or "heuristic"
+
+# Fairness testing
+fairness:
+  perturbations:
+    - "gender_proxy"
+    - "name_redaction"
+    - "university_swap"
+    - "gap_insertion"
+  
+  gender_proxy:
+    swap_pronouns: true
+    swap_organizations: true
+    test_both_directions: true
+  
+  name_redaction:
+    redact_all: true
+    use_neutral_placeholder: false
+  
+  university_swap:
+    prestige_tiers:
+      tier1: ["Stanford", "MIT", "Harvard", "Princeton"]
+      tier2: ["State University", "Regional College", "City University"]
+  
+  gap_insertion:
+    gap_months: 6
+    positions: ["before_last_job", "middle"]
+  
+  thresholds:
+    max_mean_rank_change: 3.0
+    max_rank_change: 10
+    max_affected_percentage: 15.0
+
+# Proxy attribute analysis
+proxy_analysis:
+  extract_features:
+    - "university_tier"
+    - "years_experience"
+    - "industry_keywords"
+    - "readability_score"
+  
+  regression:
+    model: "linear"
+    cv_folds: 5
+
+# Explainability
+explainability:
+  methods:
+    - "ablation"
+    - "token_contribution"
+  
+  ablation:
+    sections:
+      - "skills"
+      - "experience"
+      - "education"
+      - "summary"
+  
+  token_contribution:
+    top_k: 10
+    min_contribution: 0.01
+
+# Stability testing
+stability:
+  typo_test:
+    num_typos: [1, 3, 5]
+    typo_rate: 0.05
+  
+  synonym_test:
+    replacements:
+      managed: ["led", "oversaw", "directed"]
+      developed: ["created", "built", "designed"]
+      analyzed: ["examined", "evaluated", "assessed"]
+  
+  formatting_test:
+    remove_bullets: true
+    change_spacing: true
+    remove_newlines: true
+  
+  threshold:
+    max_rank_change_percentage: 10.0
+
+# Reporting
+reporting:
+  output_dir: "reports/output/"
+  formats:
+    - "json"
+    - "html"
+    - "csv"
+  
+  include_visualizations: true
+  
+  model_card:
+    include: true
+    path: "reports/model_card.md"
+
+# API configuration (optional)
+api:
+  enabled: false
+  host: "0.0.0.0"
+  port: 8000
+  max_resumes_per_request: 100
+  include_explanations: true
+  rate_limit: "100/minute"
+
+# Logging
+logging:
+  level: "INFO"
+  file: "logs/system.log"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+# Privacy and ethics
+privacy:
+  redact_pii: true
+  pii_patterns:
+    - "email"
+    - "phone"
+    - "address"
+    - "ssn"
+  
+  anonymize_names: true
+  hash_identifiers: true
+
+# Performance
+performance:
+  use_caching: true
+  cache_embeddings: true
+  parallel_processing: true
+  max_workers: 4
