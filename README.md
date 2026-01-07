@@ -2,7 +2,7 @@
 
 > **Production Insight**: *Pure embedding models under-represent structured hiring signals. This project demonstrates a production-realistic hybrid architecture that makes implicit biases **explicit and measurable**.*
 
-[![Python 3.13](https://img.shields.io/badge/python-3.13-blue.svg)](https://www.python.org/downloads/)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![Streamlit](https://img.shields.io/badge/streamlit-1.41+-red.svg)](https://streamlit.io)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
@@ -19,7 +19,7 @@
 - ✅ **Enables counterfactual testing** (swap universities, redact names, insert gaps)
 - ✅ **Surfaces real risks** (education tier changes rank by **Δ=1.76 positions**)
 
-**The Impact**: Built for ML engineers shipping responsible hiring tools — where fairness audits are non-negotiable.
+**The Impact**: Built as an evaluation and audit framework for ML engineers working on hiring-adjacent ranking systems.
 
 ---
 
@@ -58,6 +58,8 @@ UNIVERSITY_TIERS = {
 - **Hybrid detects structural bias** (university swap: Δ=1.76 vs 0.00)
 - **Semantic misses structured signals** (gap insertion: Δ=0.00 vs 2.14)
 - **TF-IDF lacks semantic understanding** (pronoun swap: Δ=0.00 vs 0.62)
+
+*Note: Small non-zero effects for pronoun swaps arise from semantic co-occurrence patterns in experience descriptions, not from explicit gender modeling.*
 
 > **Interview Insight**: "I chose hybrid architecture because production hiring systems combine semantic understanding with explicit structured signals. Pure embeddings under-represent education and continuity biases that real stakeholders care about measuring."
 
